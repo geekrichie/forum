@@ -24,3 +24,5 @@ Route::get('password/reset/{token}','Auth\ResetPasswordController@showResetForm'
 //Registration Routes
 Route::get('register','Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register','Auth\RegisterController@register');
+
+Route::resource('users','UsersController',['only'=>['show','edit','update']]);
