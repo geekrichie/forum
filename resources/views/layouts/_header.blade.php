@@ -27,7 +27,7 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown"data-toggle="dropdown" role="button" >
                     <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
-                      <img style="width:44px; height:44px;border-radius: 50%" src="https://dn-phphub.qbox.me/uploads/avatars/11914_1510813749.jpg?imageView2/1/w/100/h/100" alt="">
+                      <img style="width:44px; height:44px;border-radius: 50%" src="{{Auth::user()->avatar}}" alt="">
                     </span>
                     {{Auth::user()->name}}<span class="caret"></span>
                   </a>

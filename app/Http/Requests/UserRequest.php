@@ -28,6 +28,7 @@ class UserRequest extends FormRequest
             'name'=>'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name,',
             'email'=>'required|email',
             'introduction'=>'max:80',
+            'avatar'=>"mimes:jpeg,bmp,png,gi|dimensions:min_width:200,min_height:200",
         ];
     }
     /**
@@ -38,6 +39,7 @@ class UserRequest extends FormRequest
      public function messages()
      {
        return [
+         'avatar.dimensions'=>"图片清晰度不够，宽和高需要达到200px以上",
          'name.required'=>"用户名不能为空。",
          'name.between'=>'用户名应为3到25的字符。',
          'name.regex'=>'用户名只能为英文、数字、横杆和下划线。',

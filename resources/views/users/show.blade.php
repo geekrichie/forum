@@ -7,7 +7,7 @@
           <div class="panel-body">
             <div class="media">
               <div class="center">
-                      <img class="thumbnail img-responsive" src="https://dn-phphub.qbox.me/uploads/avatars/11914_1510813749.jpg?imageView2/1/w/100/h/100" alt="{{$user->name}}">
+                      <img class="thumbnail img-responsive" src="{{$user->avatar}}" alt="{{$user->name}}">
               </div>
               <div class="media-body">
                 <hr>
