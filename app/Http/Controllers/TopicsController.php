@@ -16,7 +16,9 @@ class TopicsController extends Controller
 
 	public function index()
 	{
-		$topics = Topic::paginate();
+    //paginate 默認分頁是每頁15數據
+    //使用Eloquent的預加載功能來加快查詢
+		$topics = Topic::with('user','category')->paginate(30);
 		return view('topics.index', compact('topics'));
 	}
 
