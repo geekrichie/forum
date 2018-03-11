@@ -168,6 +168,7 @@ return [
          * Package Service Providers...
          */
          Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+         HieuLe\Active\ActiveServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -225,6 +226,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'Active' => HieuLe\Active\Facades\Active::class,
 
     ],
 
