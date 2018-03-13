@@ -70,6 +70,18 @@
     $(document).ready(function(){
      var editor=new Simditor({
        textarea:$('#editor'),
+       upload:{
+          url:'{{route('topics.upload_image')}}',
+          //表单提交的参数，Laravel的POST请求必须带防止CSRF跨站请求的_token参数
+          params:{ _token:'{{csrf_token()}}'},
+          fileKey:'upload_file',
+          //最多同时只能上传一张图片
+          connectionCount:3,
+          //上传过程中，用户关闭页面时的提醒
+          leaveConfirm:'文件上传中,关闭此页面将停止上传。'
+       },
+       //设定是否支持图片黏贴上传，我们使用true来开启
+       pasteImage:true,
      });
    });
 </script>
