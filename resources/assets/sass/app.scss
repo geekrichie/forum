@@ -4,7 +4,7 @@
 
 // Variables
 @import "variables";
-
+@import "topic_body";
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
@@ -123,4 +123,14 @@ footer{
     }
   }
 }
-/*topics Index Page */
+/*topics Show Page */
+.topics-show-page{
+  .panel{
+    padding:15px;
+    h1{
+      margin-bottom:0.4em auto 0.6em;
+      font-size:28px;
+      line-height: 38px;
+    }
+  }
+}
