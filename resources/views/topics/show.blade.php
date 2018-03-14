@@ -24,7 +24,7 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <h1 class="text-center">
-          {{$topic->content}}
+          {{$topic->title}}
         </h1>
 
         <div class="article-meta text-center">
@@ -47,7 +47,7 @@
                  <i class="glyphicon glyphicon-trash"></i>删除
             </a>
         </div>
-        
+
       </div>
     </div>
   </div>
