@@ -2,6 +2,8 @@
 
 namespace App\Models;
 use App\Models\User;
+use App\Models\Reply;
+use App\Models\Category;
 
 class Topic extends Model
 {
@@ -13,6 +15,10 @@ class Topic extends Model
     public function category()
     {
       return $this->belongsTo(Category::class);
+    }
+    public function replies()
+    {
+      return $this->hasMany(Reply::class);
     }
     public function scopeWithOrder($query,$order)
     {
