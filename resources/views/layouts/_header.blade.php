@@ -30,8 +30,16 @@
                 @else
                 <li>
                   <a href="{{route('topics.create')}}">
-                    <span class="glyphicon glyphicon-plue" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                   </a>
+                  {{--消息通知 --}}
+                  <li>
+                         <a href="{{ route('notifications.index') }}" class="notifications-badge" style="margin-top: -2px;">
+                             <span class="badge badge-{{ Auth::user()->notifications_count > 0 ? 'hint' : 'fade' }} " title="消息提醒">
+                                 {{ Auth::user()->notifications_count }}
+                             </span>
+                         </a>
+                     </li>
                 </li>
                 <li class="dropdown">
                   <a href="#" class="dropdown"data-toggle="dropdown" role="button" >
