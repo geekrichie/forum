@@ -15,7 +15,7 @@
           </h3>
           <hr>
 
-          @if($notifications->count())
+          @if($notifications->count()>0)
 
           <div class="notifications-list">
             @foreach($notifications as $notification)
@@ -23,7 +23,6 @@
             @endforeach
             {!! $notifications->render() !!}
           </div>
-
           @else
           <div class="empty-block">没有消息通知!</div>
           @endif
