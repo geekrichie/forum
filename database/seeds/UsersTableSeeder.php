@@ -42,5 +42,11 @@ class UsersTableSeeder extends Seeder
         $user->email="summer@yousails.com";
         $user->avatar='https://fsdhubcdn.phphub.org/uploads/images/201710/14/1/ZqM7iaP4CR.png?imageView2/1/w/200/h/200';
         $user->save();
+        //初始化用户角色，将一号用户指派为站长
+        $user->assignRole('Founder');
+        //将2号用户指派为管理员
+        $user=User::find(2);
+        $user->assignRole('Maintainer');
+
     }
 }
