@@ -59,4 +59,22 @@ class User extends Authenticatable
     {
       return $this->id==$model->user_id;
     }
+    public function setPasswordAttribute($value)
+    {
+      //如果值的长度小于60，即认为是已经加密的情况
+         if(strlen($value) !=60)
+         {
+              $value=bcrypt($value);
+         }
+         $this->attributes['password']= $value;
+    }
+
+    public function setAvatarAttribute($path)
+    {
+          if(! starts_with($path, 'http'))
+          {
+            $path=config('app.url').'/uploads/images/avatars/'.$path;
+          }
+          $this->attributes['avatar']=$path;
+    }
 }

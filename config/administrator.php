@@ -33,17 +33,6 @@ return array(
     'menu' => [
         '用户与权限' => [
             'users',
-            'roles',
-            'permissions',
-        ],
-        '内容管理' => [
-            'categories',
-            'topics',
-            'replies',
-        ],
-        '站点管理' => [
-            'settings.site',
-            'links',
         ],
     ],
     /*
@@ -54,7 +43,7 @@ return array(
      */
     'permission' => function () {
         // 只要是能管理内容的用户，就允许访问后台
-        return Auth::check() && Auth::user()->can('manage_contents');
+        return Auth::user()->can('manage_contents');
     },
     /*
      * 使用布尔值来设定是否使用后台主页面。
@@ -66,11 +55,11 @@ return array(
     // 设置后台主页视图文件，由 `use_dashboard` 选项决定
     'dashboard_view' => '',
     // 用来作为后台主页的菜单条目，由 `use_dashboard` 选项决定，菜单指的是 `menu` 选项
-    'home_page' => 'topics',
+    'home_page' => 'users',
     // 右上角『返回主站』按钮的链接
     'back_to_site_path' => '/',
     // 当选项 `permission` 权限检测不通过时，会重定向用户到此处设置的路径
-    'login_path' => 'permission-denied',
+    'login_path' => 'login',
     // 允许在登录成功后使用 Session::get('redirect') 将用户重定向到原本想要访问的后台页面
     'login_redirect_key' => 'redirect',
     // 控制模型数据列表页默认的显示条目
