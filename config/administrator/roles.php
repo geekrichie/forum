@@ -9,7 +9,7 @@ return [
 
   'permission' => function()
   {
-    return Auth::user()->can('manage_contents');
+    return Auth::user()->can('manage_users');
   },
 
   'columns' => [
