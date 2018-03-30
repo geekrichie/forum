@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Http\Requests\TopicRequest;
 use Auth;
 use App\Handlers\ImageUploadHandler;
+use App\Models\Link;
 
 class TopicsController extends Controller
 {
@@ -18,13 +19,15 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index(Request $request,Topic $topic,User $user)
+	public function index(Request $request,Topic $topic,User $user,Link $link)
 	{
     //paginate 默認分頁是每頁15數據
     //使用Eloquent的預加載功能來加快查詢
 		$topics = Topic::withOrder($request->order)->paginate(20);
     $active_users = $user->getActiveUsers();
-		return view('topics.index', compact('topics','active_users'));
+    $links = $link->getAllCached();
+    
+		return view('topics.index', compact('topics','active_users','links'));
 	}
 
     public function show(Request $request,Topic $topic)
