@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Reply;
 use App\Http\Requests\TopicRequest;
 use Auth;
 use App\Handlers\ImageUploadHandler;
@@ -21,7 +22,7 @@ class TopicsController extends Controller
 
 	public function index(Request $request,Topic $topic,User $user,Link $link)
 	{
-    //paginate 默認分頁是每頁15數據
+    //paginate 默认分页是每页15个数据
     //使用Eloquent的預加載功能來加快查詢
 		$topics = Topic::withOrder($request->order)->paginate(20);
     $active_users = $user->getActiveUsers();
@@ -36,9 +37,26 @@ class TopicsController extends Controller
        if(!empty($topic->slug)&&$topic->slug!=$request->slug){
         return redirect($topic->link(),301);
        }
-        return view('topics.show', compact('topic'));
+        $topic->load('replies.user');
+        $replies = $topic->getReplies();
+        $replies['root'] = $replies[''];
+        unset($replies['']);
+        return view('topics.show', compact('topic','replies'));
     }
 
+
+    public function postReply(Topic $topic, Request $request)
+    {
+      // dd($request->content);
+      $reply = new Reply();
+      $reply->content=$request->content;
+      $reply->user_id=Auth::id();
+      $reply->topic_id=$topic->id;
+      $reply->parent_id= $request->parent_id;
+      $reply->save();
+        return back();
+    }
+    
 	public function create(Topic $topic)
 	{
       $categories=Category::all();

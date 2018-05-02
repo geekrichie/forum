@@ -62,8 +62,11 @@
      {{--用户回复列表--}}
       <div class="panel panel-default topic-reply">
             <div class="panel-body">
-                @includeWhen(Auth::check(),'topics._reply_box', ['topic' => $topic])
-                @include('topics._reply_list', ['replies' => $topic->replies()->with('user')->get()])
+                <!-- @includeWhen(Auth::check(),'topics._reply_box', ['topic' => $topic]) 
+                @include('topics._reply_list', ['replies' => $topic->replies()->with('user')->get()]) -->
+                @include('replies.list',['collections'=>$replies['root']])
+                      <h3>留下您的评论</h3>
+                @include('replies.form',['parentId'=>$topic->id])
             </div>
         </div>
 

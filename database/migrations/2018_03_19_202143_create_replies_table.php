@@ -11,7 +11,8 @@ class CreateRepliesTable extends Migration
             $table->increments('id');
             $table->integer('topic_id')->unsigned()->default(0)->index();
             $table->integer('user_id')->unsigned()->default(0)->index();
-            $table->text('content');
+		    $table->integer('parent_id')->index()->nullable();
+			$table->text('content');
             $table->timestamps();
         });
 	}

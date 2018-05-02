@@ -46,4 +46,14 @@ class Topic extends Model
     public function link($params=[]){
       return route('topics.show',array_merge([$this->id,$this->slug],$params));
     }
+
+   /*
+   * 获取这篇文章的评论以parent_id来分组
+   * @return static
+   */
+  public function getReplies()
+  {
+      return $this->replies()->with('user')->get()->groupBy('parent_id');
+  }
+  
 }

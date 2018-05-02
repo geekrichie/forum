@@ -17,9 +17,9 @@ class RepliesController extends Controller
 
 	public function store(ReplyRequest $request,Reply $reply)
 	{
-    $reply->content=$request->content;
-    $reply->user_id=Auth::id();
-    $reply->topic_id=$request->topic_id;
+		$reply->content=$request->content;
+		$reply->user_id=Auth::id();
+		$reply->topic_id=$request->topic_id;
 		$reply->save();
 		return redirect()->to($reply->topic->link())->with('success','创建成功！');
 	}
